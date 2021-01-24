@@ -12,4 +12,14 @@ const connection = mysql.createConnection({
 connection.connect(err => {
     if (err) throw err;
     console.log('Connection Suceessful')
+    afterConnection();
 });
+
+//asks for which table to select from
+afterConnection = () => {
+    connection.query('SELECT * FROM ? WHERE ?', function (err, res) {
+        if (err) throw err;
+        console.log(res);
+        connection.end();
+    });
+};
