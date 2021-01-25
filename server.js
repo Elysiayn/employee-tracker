@@ -1,10 +1,8 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
-const {
-    connection,
-    db
-} = require('./db/database');
+const connection = require('./db/database');
 const questions = require('./lib/questions');
+const cTable = require('console.table');
 
 
 // to view departments
@@ -16,6 +14,20 @@ getDepartments = () => {
             console.table(res);
         };
 };
+
+// function to begin prompt
+function init() {
+    return inquirer.prompt(questions)
+        .then(res => {
+            switch (res.promptQuestions) {
+                case 'View all departments':
+                    getDepartments();
+                    break;
+            };
+        });
+};
+
+init();
 
 
 // creates new department
@@ -30,19 +42,3 @@ getDepartments = () => {
 //     );
 //     console.log(query.sql);
 // };
-
-
-
-// function to begin prompt
-function init() {
-    return inquirer.prompt(questions)
-        .then(res => {
-            switch (res.startPrompt) {
-                case 'View all departments':
-                    getDepartments();
-                    break;
-            };
-        });
-};
-
-init();
