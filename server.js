@@ -35,6 +35,19 @@ getEmployees = () => {
         })
 };
 
+// creates new department
+// createDepartment = (name) => {
+//     console.log('Adding a new department...\n');
+//     const query = connection.query(
+//         'INSERT INTO department SET ?',
+//         function (err, res) {
+//             if (err) throw err;
+//             console.log(res.affectedRows + 'New department sucessfully added!\n');
+//         }
+//     );
+//     console.log(query.sql);
+// };
+
 // function to begin prompt
 function init() {
     return inquirer.prompt(questions)
@@ -49,22 +62,11 @@ function init() {
                 case 'View all employees':
                     getEmployees();
                     break;
+                case 'Add a department':
+                    createDepartment();
+                    break;
             };
         });
 };
 
 init();
-
-
-// creates new department
-// createDepartment = (name) => {
-//     console.log('Adding a new department...\n');
-//     const query = connection.query(
-//         'INSERT INTO department SET ?',
-//         function (err, res) {
-//             if (err) throw err;
-//             console.log(res.affectedRows + 'New department sucessfully added!\n');
-//         }
-//     );
-//     console.log(query.sql);
-// };
