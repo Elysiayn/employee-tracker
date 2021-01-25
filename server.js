@@ -38,14 +38,14 @@ getEmployees = () => {
 };
 
 // creates new department
-// createDepartment = (name) => {
-//     console.log('Adding a new department...\n');
-//     connection.promise().query('INSERT INTO departments (department_name) VALUES (?)')
-//         .then(([rows]) => {
-//             const newDepartment = rows
-//             console.table(newDepartment)
-//         })
-// };
+createDepartment = (name) => {
+    console.log('Adding a new department...\n');
+    connection.promise().query('INSERT INTO departments SET ?')
+        .then(([rows]) => {
+            const newDepartment = rows
+            console.table(newDepartment)
+        })
+};
 
 //     const query = connection.query(
 //         'INSERT INTO department SET ?',
