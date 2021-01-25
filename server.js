@@ -38,19 +38,19 @@ getEmployees = () => {
 };
 
 // creates new department
-createDepartment = () => {
+createDepartment = (newDepartment) => {
     console.log('Adding a new department...\n');
     const query = connection.query(
         'INSERT INTO departments SET ?', {
-            department_name: []
+            department_name: newDepartment
         },
         function (err, res) {
             if (err) throw err;
             console.log(res.affectedRows + 'New department sucessfully added!\n');
+            init();
         }
     );
     console.log(query.sql);
-    // init();
 };
 
 // to quit program
@@ -71,7 +71,7 @@ function init() {
                     getEmployees();
                     break;
                 case 'Add a department':
-                    createDepartment();
+                    createDepartment(res.newDepartment);
                     break;
                 case 'Quit':
                     quit();
