@@ -6,13 +6,14 @@ const {
 } = require('./db/database');
 const questions = require('./lib/questions');
 
+
 // to view departments
 getDepartments = () => {
     console.log('Veiwing all departments...\n');
     connection.query('SELECT * FROM department'),
         function (err, res) {
             if (err) throw err;
-            console.log(res);
+            console.table(res);
         };
 };
 
