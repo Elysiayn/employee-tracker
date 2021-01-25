@@ -50,7 +50,7 @@ createDepartment = () => {
         }
     );
     console.log(query.sql);
-    init();
+    // init();
 };
 
 // to quit program
