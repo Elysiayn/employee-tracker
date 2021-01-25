@@ -78,6 +78,7 @@ const quit = () => connection.end();
 function init() {
     return inquirer.prompt(questions)
         .then(res => {
+            console.log(res)
             switch (res.promptQuestions) {
                 case 'View all departments':
                     getDepartments();
