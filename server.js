@@ -4,7 +4,6 @@ const connection = require('./db/database');
 const questions = require('./lib/questions');
 const cTable = require('console.table');
 
-
 // to view departments
 getDepartments = () => {
     console.log('Veiwing all departments...\n');
@@ -12,6 +11,7 @@ getDepartments = () => {
         .then(([rows]) => {
             const departments = rows
             console.table(departments)
+            init();
         })
 };
 
@@ -22,6 +22,7 @@ getRoles = () => {
         .then(([rows]) => {
             const roles = rows
             console.table(roles)
+            init();
         })
 };
 
@@ -32,12 +33,20 @@ getEmployees = () => {
         .then(([rows]) => {
             const employees = rows
             console.table(employees)
+            init();
         })
 };
 
 // creates new department
 // createDepartment = (name) => {
 //     console.log('Adding a new department...\n');
+//     connection.promise().query('INSERT INTO departments (department_name) VALUES (?)')
+//         .then(([rows]) => {
+//             const newDepartment = rows
+//             console.table(newDepartment)
+//         })
+// };
+
 //     const query = connection.query(
 //         'INSERT INTO department SET ?',
 //         function (err, res) {
@@ -47,6 +56,9 @@ getEmployees = () => {
 //     );
 //     console.log(query.sql);
 // };
+
+// to quit program
+const quit = () => connection.end();
 
 // function to begin prompt
 function init() {
@@ -64,6 +76,9 @@ function init() {
                     break;
                 case 'Add a department':
                     createDepartment();
+                    break;
+                case 'Quit':
+                    quit();
                     break;
             };
         });
