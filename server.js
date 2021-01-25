@@ -28,7 +28,7 @@ getRoles = () => {
 // to view all employees
 getEmployees = () => {
     console.log('Veiwing all employees...\n');
-    connection.promise().query('SELECT * FROM employees')
+    connection.promise().query('SELECT employees.id, employees.first_name, employees.last_name, roles.title, roles.salary, departments.department_name, CONCAT(e2.first_name, e2.last_name) AS manager FROM employees LEFT JOIN roles ON employees.role_id = roles.id LEFT JOIN departments ON roles.department_id = departments.id LEFT JOIN employees AS e2 ON employees.manager_id = e2.id')
         .then(([rows]) => {
             const employees = rows
             console.table(employees)
