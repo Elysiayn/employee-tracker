@@ -8,11 +8,11 @@ const cTable = require('console.table');
 // to view departments
 getDepartments = () => {
     console.log('Veiwing all departments...\n');
-    connection.query('SELECT * FROM department'),
-        function (err, res) {
-            if (err) throw err;
-            console.table(res);
-        };
+    connection.promise().query('SELECT * FROM department')
+        .then(([rows]) => {
+            const departments = rows
+            console.table(departments)
+        })
 };
 
 // function to begin prompt
