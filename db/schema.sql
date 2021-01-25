@@ -5,7 +5,7 @@ USE business_db;
 -- department table
 CREATE TABLE departments (
     id INTEGER(10) AUTO_INCREMENT NOT NULL,
-    name VARCHAR(30),
+    department_name VARCHAR(30),
     PRIMARY KEY (id)
 );
 

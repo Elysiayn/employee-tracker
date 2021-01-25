@@ -18,7 +18,7 @@ getDepartments = () => {
 // to view all roes
 getRoles = () => {
     console.log('Veiwing all roles...\n');
-    connection.promise().query('SELECT * FROM roles')
+    connection.promise().query('SELECT roles.id, roles.title, roles.salary, departments.department_name FROM roles LEFT JOIN departments ON roles.department_id = departments.id')
         .then(([rows]) => {
             const roles = rows
             console.table(roles)
