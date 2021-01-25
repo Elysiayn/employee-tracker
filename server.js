@@ -47,6 +47,7 @@ createDepartment = (name) => {
         })
 };
 
+
 //     const query = connection.query(
 //         'INSERT INTO department SET ?',
 //         function (err, res) {
