@@ -54,22 +54,22 @@ createDepartment = (newDepartment) => {
 };
 
 // creates new role
-createRole = (newRoleTitle, newRoleSalary, newRoleDepid) => {
-    console.log('Adding a new role...\n');
-    const query = connection.query(
-        'INSERT INTO roles SET ?, ?, ?', {
-            title: newRoleTitle,
-            salary: newRoleSalary,
-            department_id: newRoleDepid
-        },
-        function (err, res) {
-            if (err) throw err;
-            console.log(res.affectedRows + 'New role sucessfully added!\n');
-            init();
-        }
-    );
-    console.log(query.sql);
-};
+// createRole = (newRoleTitle, newRoleSalary, newRoleDepid) => {
+//     console.log('Adding a new role...\n');
+//     const query = connection.query(
+//         'INSERT INTO roles SET ?, ?, ?', {
+//             title: newRoleTitle,
+//             salary: newRoleSalary,
+//             department_id: newRoleDepid
+//         },
+//         function (err, res) {
+//             if (err) throw err;
+//             console.log(res.affectedRows + 'New role sucessfully added!\n');
+//             init();
+//         }
+//     );
+//     console.log(query.sql);
+// };
 
 // to quit program
 const quit = () => connection.end();
@@ -78,7 +78,7 @@ const quit = () => connection.end();
 function init() {
     return inquirer.prompt(questions)
         .then(res => {
-            console.log(res)
+            // console.log(res)
             switch (res.promptQuestions) {
                 case 'View all departments':
                     getDepartments();
@@ -92,9 +92,9 @@ function init() {
                 case 'Add a department':
                     createDepartment(res.newDepartment);
                     break;
-                case 'Add a role':
-                    createRole(res.newRoleTitle, res.newRoleSalary, res.newRoleDepid);
-                    break;
+                    // case 'Add a role':
+                    //     createRole(res.newRoleTitle, res.newRoleSalary, res.newRoleDepid);
+                    //     break;
                 case 'Quit':
                     quit();
                     break;
