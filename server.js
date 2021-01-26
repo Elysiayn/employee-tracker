@@ -89,6 +89,23 @@ createEmployee = (newEmployeeFirstName, newEmployeeLastName, newEmployeeRoleId, 
     console.log(query.sql);
 };
 
+// to update an employee
+updateEmployee = (updateEmployeeRoleId, updateEmployeeManagerId) => {
+    console.log('Updating an employee...\n');
+    const query = connection.query(
+        'UPDATE employees (role_id, manager_id)  VALUES (?, ?, ?) WHERE id=?', [
+            updateEmployeeRoleId,
+            updateEmployeeManagerId
+        ],
+        function (err, res) {
+            if (err) throw err;
+            console.log(res.affectedRows + 'Employee sucessfully updated!\n');
+            init();
+        }
+    );
+    console.log(query.sql);
+};
+
 // to quit program
 const quit = () => connection.end();
 
@@ -116,6 +133,9 @@ function init() {
                 case 'Add an employee':
                     createEmployee(res.newEmployeeFirstName, res.newEmployeeLastName, res.newEmployeeRoleId, res.newEmployeeManagerId);
                     break;
+                    // case 'Update an employee':
+                    //     updateEmployee(res.updateEmployeeRoleId, res.updateEmployeeManagerId);
+                    //     break;
                 case 'Quit':
                     quit();
                     break;
