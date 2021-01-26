@@ -93,7 +93,7 @@ createEmployee = (newEmployeeFirstName, newEmployeeLastName, newEmployeeRoleId, 
 updateEmployee = (updateEmployeeRoleId, updateEmployeeManagerId) => {
     console.log('Updating an employee...\n');
     const query = connection.query(
-        'UPDATE employees (role_id, manager_id)  VALUES (?, ?, ?) WHERE id=?', [
+        'UPDATE employees (role_id, manager_id)  VALUES (?, ? ) WHERE employee.id = ?', [
             updateEmployeeRoleId,
             updateEmployeeManagerId
         ],
@@ -133,9 +133,9 @@ function init() {
                 case 'Add an employee':
                     createEmployee(res.newEmployeeFirstName, res.newEmployeeLastName, res.newEmployeeRoleId, res.newEmployeeManagerId);
                     break;
-                    // case 'Update an employee':
-                    //     updateEmployee(res.updateEmployeeRoleId, res.updateEmployeeManagerId);
-                    //     break;
+                case 'Update an employee':
+                    updateEmployee(res.updateEmployeeRoleId, res.updateEmployeeManagerId);
+                    break;
                 case 'Quit':
                     quit();
                     break;
