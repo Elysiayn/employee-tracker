@@ -107,6 +107,22 @@ updateEmployee = (updateEmployeeRoleId, updateEmployeeManagerId, updateEmployee)
     console.log(query.sql);
 };
 
+// deletes department
+deleteDepartment = (deleteDepartment) => {
+    console.log('Deleting a department...\n');
+    const query = connection.query(
+        'DELETE FROM departments WHERE departments.id = ?', [
+            deleteDepartment
+        ],
+        function (err, res) {
+            if (err) throw err;
+            console.log(res.affectedRows + 'Department sucessfully deleted!\n');
+            init();
+        }
+    );
+    console.log(query.sql);
+};
+
 // to quit program
 const quit = () => connection.end();
 
@@ -136,6 +152,9 @@ function init() {
                     break;
                 case 'Update an employee':
                     updateEmployee(res.updateEmployeeRoleId, res.updateEmployeeManagerId, res.updateEmployee);
+                    break;
+                case 'Delete a department':
+                    deleteDepartment(res.deleteDepartment);
                     break;
                 case 'Quit':
                     quit();
