@@ -70,6 +70,25 @@ createRole = (newRoleTitle, newRoleSalary, newRoleDepid) => {
     console.log(query.sql);
 };
 
+// creates new employee
+createEmployee = (newEmployeeFirstName, newEmployeeLastName, newEmployeeRoleId, newEmployeeManagerId) => {
+    console.log('Adding a new employee...\n');
+    const query = connection.query(
+        'INSERT INTO employees (first_name, last_name, role_id, manager_id)  VALUES (?, ?, ?, ?)', [
+            newEmployeeFirstName,
+            newEmployeeLastName,
+            newEmployeeRoleId,
+            newEmployeeManagerId
+        ],
+        function (err, res) {
+            if (err) throw err;
+            console.log(res.affectedRows + 'New employee sucessfully added!\n');
+            init();
+        }
+    );
+    console.log(query.sql);
+};
+
 // to quit program
 const quit = () => connection.end();
 
@@ -93,6 +112,9 @@ function init() {
                     break;
                 case 'Add a role':
                     createRole(res.newRoleTitle, res.newRoleSalary, res.newRoleDepid);
+                    break;
+                case 'Add an employee':
+                    createEmployee(res.newEmployeeFirstName, res.newEmployeeLastName, res.newEmployeeRoleId, res.newEmployeeManagerId);
                     break;
                 case 'Quit':
                     quit();
