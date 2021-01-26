@@ -123,6 +123,38 @@ deleteDepartment = (deleteDepartment) => {
     console.log(query.sql);
 };
 
+// deletes role
+deleteRole = (deleteRole) => {
+    console.log('Deleting a role...\n');
+    const query = connection.query(
+        'DELETE FROM roles WHERE roles.id = ?', [
+            deleteRole
+        ],
+        function (err, res) {
+            if (err) throw err;
+            console.log(res.affectedRows + 'Role sucessfully deleted!\n');
+            init();
+        }
+    );
+    console.log(query.sql);
+};
+
+// deletes employee
+deleteEmployee = (deleteEmployee) => {
+    console.log('Deleting an employee...\n');
+    const query = connection.query(
+        'DELETE FROM employees WHERE employees.id = ?', [
+            deleteEmployee
+        ],
+        function (err, res) {
+            if (err) throw err;
+            console.log(res.affectedRows + 'Employee sucessfully deleted!\n');
+            init();
+        }
+    );
+    console.log(query.sql);
+};
+
 // to quit program
 const quit = () => connection.end();
 
@@ -155,6 +187,12 @@ function init() {
                     break;
                 case 'Delete a department':
                     deleteDepartment(res.deleteDepartment);
+                    break;
+                case 'Delete a role':
+                    deleteRole(res.deleteRole);
+                    break;
+                case 'Delete a employee':
+                    deleteEmployee(res.deleteEmployee);
                     break;
                 case 'Quit':
                     quit();
