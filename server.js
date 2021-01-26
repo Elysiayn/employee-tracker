@@ -93,7 +93,7 @@ createEmployee = (newEmployeeFirstName, newEmployeeLastName, newEmployeeRoleId, 
 updateEmployee = (updateEmployeeRoleId, updateEmployeeManagerId, updateEmployee) => {
     console.log('Updating an employee...\n');
     const query = connection.query(
-        'UPDATE employees (role_id, manager_id)  VALUES (?, ? ) WHERE employee.id = ?', [
+        'UPDATE employees SET role_id = ?, manager_id = ? WHERE employees.id = ?', [
             updateEmployeeRoleId,
             updateEmployeeManagerId,
             updateEmployee
