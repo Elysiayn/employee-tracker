@@ -21,16 +21,19 @@ This is a command-line application that assists the user in managing a company's
 ## Installation
 
 - Clone down the application code from GitHub.
-- Please ensure you have a node.js integrated terminal before running 'npm inquirer' in the of the root project directory. If not:
+- Install [MySQL](https://www.mysql.com/downloads/) in order to have access to their open source relational database management system.
+- Please ensure you have a node.js integrated terminal before proceeding. If not:
 - Download [Node](https://nodejs.org/en/).
 - Inside root directory terminal, run 'npm init'.
-- Inside root directory terminal, run 'npm install inquirer' to install [Inquirer](https://www.npmjs.com/package/inquirer#installation).
-- Inside root directory terminal, run 'npm install inquirer' to install [Inquirer](https://www.npmjs.com/package/inquirer#installation).
+- Inside root directory terminal, run 'npm install inquirer' to install [Inquirer](https://www.npmjs.com/package/inquirer#installation) to interact with the user via command-line.
+- Inside root directory terminal, run 'npm install --save mysql2' to install [MySQL 2](https://www.npmjs.com/package/mysql2) and connect user MySQL database to perform queries in this application.
+- Inside root directory terminal, run 'npm install console.table --save' to install [console.table](https://www.npmjs.com/package/console.table) to print MySQL rows to the console.
 - Inside root directory terminal, run 'node server.js' to activate application.
 
 ## Usage
 
-- instruction
+-
+- Please review video of application [demo]().
 
 ## Features
 
