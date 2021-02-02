@@ -120,6 +120,25 @@ createEmployee = (emp) => {
 //     console.log(query.sql);
 // };
 
+// creates new manager
+createManager = (newManagerFirstName, newManagerLastName, newManagerRoleId, newEmployeeManagerId) => {
+    console.log('Adding a new manager...\n');
+    const query = connection.query(
+        'INSERT INTO employees (first_name, last_name, role_id, manager_id)  VALUES (?, ?, ?, ?)', [
+            newManagerFirstName,
+            newManagerLastName,
+            newManagerRoleId,
+            newEmployeeManagerId
+        ],
+        function (err, res) {
+            if (err) throw err;
+            console.log(res.affectedRows + 'New manager sucessfully added!\n');
+            init();
+        }
+    );
+    console.log(query.sql);
+};
+
 // to update an employee
 updateEmployee = (updateEmployeeRoleId, updateEmployeeManagerId, updateEmployee) => {
     console.log('Updating an employee...\n');
