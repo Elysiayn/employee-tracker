@@ -70,36 +70,7 @@ createRole = (newRoleTitle, newRoleSalary, newRoleDepid) => {
     console.log(query.sql);
 };
 
-// creates new employee
-createEmployee = (newEmployeeFirstName, newEmployeeLastName, newEmployeeRoleId, newEmployeeManagerId) => {
-    console.log('Adding a new employee...\n');
-    var values = []
-    if (!newEmployeeManagerId) {
-        values = [
-            newEmployeeFirstName,
-            newEmployeeLastName,
-            newEmployeeRoleId
 
-        ]
-        var queryURL = 'INSERT INTO employees (first_name, last_name, role_id)  VALUES (?, ?, ?)'
-    } else {
-        var values = [
-            newEmployeeFirstName,
-            newEmployeeLastName,
-            newEmployeeRoleId,
-            newEmployeeManagerId
-        ]
-        var queryURL = 'INSERT INTO employees (first_name, last_name, role_id, manager_id)  VALUES (?, ?, ?, ?)'
-    }
-    const query = connection.query(queryURL, values,
-        function (err, res) {
-            if (err) throw err;
-            console.log(res.affectedRows + 'New employee sucessfully added!\n');
-            init();
-        }
-    );
-    console.log(query.sql);
-};
 
 // to update an employee
 updateEmployee = (updateEmployeeRoleId, updateEmployeeManagerId, updateEmployee) => {
