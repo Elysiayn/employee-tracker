@@ -47,7 +47,7 @@ This is a command-line application that assists the user in managing a company's
 - Delete a role: Deletes a current job role in the database. User will be prompted to input the role ID of the desired job role to be deleted.
 - Delete an employee: Deletes a current employee in the database. User will be prompted to input the employee ID of the desired employee to be deleted.
 - Quit: This command exits the application and returns the terminal for user commands.
-- Please review video of application [demo]().
+- Please review video of application [demo](https://youtu.be/pAx0MQpgrBA).
 
 ## Features
 
